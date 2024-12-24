@@ -1,0 +1,259 @@
+@font-face {
+  font-family: SamsungSharpSans;
+  src: url("./fonts/SamsungSharpSans-Medium.otf") format("opentype");
+}
+@font-face {
+  font-family: SamsungSharpSans-Regular;
+  src: url("./fonts/SamsungSharpSans-Regular.otf") format("opentype");
+}
+
+@font-face {
+  font-family: SamsungSharpSansBold;
+  src: url("./fonts/SamsungSharpSans-Bold.otf") format("opentype");
+}
+
+.title {
+  font-size: 31px;
+  font-family: "SamsungSharpSans", sans-serif;
+  color: white;
+  flex-grow: 1;
+  margin-left: 0;
+  line-height: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+}
+p {
+  margin: 0;
+}
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.logo {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  position: relative;
+}
+
+.samsung_logo {
+  max-width: 215px;
+  position: absolute;
+  left: -250px;
+  top: 100px;
+  animation: slide-in 2s ease-in-out 0.5s forwards;
+}
+
+.wrapper {
+  background-image: url("./img/BG.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+}
+
+.overlay {
+  background: white;
+  position: absolute;
+  top: 0;
+  right: -100%;
+  width: 50%;
+  height: 100%;
+  z-index: 2;
+  /* animation: frame-in 2s ease-in-out 1s forwards; */
+}
+
+.frame {
+  position: absolute; /* Изображение должно быть внутри контейнера */
+  top: 0; /* Отступ сверху 0 */
+  left: 0; /* Отступ слева 0 */
+  width: 100%; /* Ширина изображения 100% от контейнера */
+  height: 100%; /* Высота изображения 100% от контейнера */
+ object-fit: cover; /* Сохраняет пропорции */
+
+  
+}
+.active{
+    transform: translate(-50%, -50%) scale(0.8)
+}
+
+@keyframes frame-in {
+  0% {
+    right: -100%; /* Начинает за пределами экрана */
+  }
+
+  100% {
+    right: 50%; /* Остается в видимой части экрана */
+  }
+}
+
+.container {
+  padding: 35px;
+  width: 1600px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  height: 100vh;
+
+  border: 4px solid #000;
+  /* background-image: url("./img/frame1.jpg"); */
+  /* Изображение будет растянуто с сохранением пропорций */
+  background-position: center;
+  background-repeat: no-repeat; /* Отключение повторов */
+  background-size: cover;
+  
+}
+.description {
+  margin-top: 170px;
+  max-width: 475px;
+  font-family: "SamsungSharpSansBold", sans-serif;
+  font-size: 36px;
+  position: absolute;
+  position: relative;
+}
+
+.test {
+  display: flex;
+  flex-direction: column;
+}
+.test {
+  width: 55px !important;
+  position: absolute;
+  animation: slide-in 1s ease-in-out;
+}
+.description_text_first {
+  animation: slide-in 2s ease-in-out 1s forwards;
+  left: -510px;
+  top: 100px;
+  position: absolute;
+}
+
+.description_text_second {
+  animation: slide-in-2 2s ease-in-out 1.5s forwards;
+  left: -490px;
+  top: 150px; /* Изменим начальную позицию второго элемента по оси Y */
+  position: absolute;
+}
+
+.description_text_third {
+  animation: slide-in-3 2s ease-in-out 2s forwards; /* Увеличиваем delay для третьего элемента */
+  left: -490px;
+  top: 200px; /* Начальная позиция третьего элемента */
+  position: absolute;
+}
+.bottom_title {
+  margin-top: auto;
+  position: relative;
+}
+
+.btm_title {
+  font-family: "SamsungSharpSans-Regular", sans-serif;
+  font-size: 95px;
+  color: white;
+  font-weight: 400;
+}
+.btm_par_medium {
+  font-family: "SamsungSharpSansBold", sans-serif;
+  font-size: 55px;
+  color: white;
+}
+
+.btm_title_bold {
+  font-family: "SamsungSharpSansBold", sans-serif;
+}
+.btm_par_last {
+  font-family: "SamsungSharpSansMedium", sans-serif;
+  color: grey;
+  font-size: 16px;
+}
+
+@keyframes slide-in {
+  0% {
+    left: -220px; /* Начинает за пределами экрана */
+    opacity: 0; /* Начальная прозрачность */
+    top: 100px; /* Начальная позиция сверху */
+  }
+  50% {
+    opacity: 1; /* Становится видимым */
+    left: 0; /* Перемещается в видимую часть экрана */
+    top: 100px; /* Остается на исходной высоте */
+  }
+  100% {
+    opacity: 1; /* Сохраняем видимость */
+    left: 0; /* Остается в видимой части экрана */
+    top: 0; /* Поднимется вверх до положения 0 */
+  }
+}
+
+.btm_title {
+  position: absolute;
+  left: -700px;
+  top: -200px;
+  animation: slide-in-btm 2s ease-in-out 0.3s forwards;
+}
+
+.btm_par_medium {
+  position: absolute;
+  top: -90px;
+  animation: slide-in-btm 2s ease-in-out 0.3s forwards;
+}
+
+@keyframes slide-in-btm {
+  0% {
+    left: -700px; /* Начинает за пределами экрана */
+    opacity: 0; /* Начальная прозрачность */
+  }
+  50% {
+    opacity: 1; /* Становится видимым */
+    left: 0; /* Перемещается в видимую часть экрана */
+  }
+  100% {
+    opacity: 1; /* Сохраняем видимость */
+    left: 0; /* Остается в видимой части экрана */
+  }
+}
+
+@keyframes slide-in-2 {
+  0% {
+    left: -220px; /* Начинает за пределами экрана */
+    opacity: 0; /* Начальная прозрачность */
+    top: 150px; /* Начальная позиция сверху для второго элемента */
+  }
+  50% {
+    opacity: 1; /* Становится видимым */
+    left: 0; /* Перемещается в видимую часть экрана */
+    top: 150px; /* Остается на исходной высоте */
+  }
+  100% {
+    opacity: 1; /* Сохраняем видимость */
+    left: 0; /* Остается в видимой части экрана */
+    top: 40px; /* Поднимется вверх до положения 0 */
+  }
+}
+
+@keyframes slide-in-3 {
+  0% {
+    left: -220px; /* Начинает за пределами экрана */
+    opacity: 0; /* Начальная прозрачность */
+    top: 200px; /* Начальная позиция сверху для третьего элемента */
+  }
+  50% {
+    opacity: 1; /* Становится видимым */
+    left: 0; /* Перемещается в видимую часть экрана */
+    top: 200px; /* Остается на исходной высоте */
+  }
+  100% {
+    opacity: 1; /* Сохраняем видимость */
+    left: 0; /* Остается в видимой части экрана */
+    top: 80px; /* Поднимется вверх до положения 0 */
+  }
+}
