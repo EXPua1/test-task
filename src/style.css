@@ -12,6 +12,41 @@
   src: url("./fonts/SamsungSharpSans-Bold.otf") format("opentype");
 }
 
+body {
+  margin: 0;
+}
+
+.frame_text {
+  font-family: "SamsungSharpSans", sans-serif;
+
+  font-size: 28px;
+}
+.frame_text_container {
+  position: absolute;
+  top: 400px;
+  opacity: 0;
+  animation: slide-opacity 2s ease-in-out 3s forwards;
+  z-index: 5;
+}
+.read_more {
+  color: grey;
+}
+@media (max-width: 768px) {
+    .overlay {
+        width: 100%;
+        height: 50%;
+    }
+}
+
+@keyframes slide-opacity {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .title {
   font-size: 31px;
   font-family: "SamsungSharpSans", sans-serif;
@@ -49,6 +84,7 @@ img {
   left: -250px;
   top: 100px;
   animation: slide-in 2s ease-in-out 0.5s forwards;
+  z-index: 5;
 }
 
 .wrapper {
@@ -63,11 +99,14 @@ img {
   background: white;
   position: absolute;
   top: 0;
-  right: -100%;
+  left: -100%;
   width: 50%;
   height: 100%;
   z-index: 2;
-  /* animation: frame-in 2s ease-in-out 1s forwards; */
+  animation: frame-in 2s ease-in-out 1s forwards;
+}
+.frame_container{
+  
 }
 
 .frame {
@@ -76,12 +115,10 @@ img {
   left: 0; /* Отступ слева 0 */
   width: 100%; /* Ширина изображения 100% от контейнера */
   height: 100%; /* Высота изображения 100% от контейнера */
- object-fit: cover; /* Сохраняет пропорции */
-
-  
+  object-fit: cover; /* Сохраняет пропорции */
 }
-.active{
-    transform: translate(-50%, -50%) scale(0.8)
+.active {
+  transform: translate(-50%, -50%) scale(0.8);
 }
 
 @keyframes frame-in {
@@ -90,7 +127,7 @@ img {
   }
 
   100% {
-    right: 50%; /* Остается в видимой части экрана */
+    left: 0; /* Остается в видимой части экрана */
   }
 }
 
@@ -105,20 +142,20 @@ img {
   height: 100vh;
 
   border: 4px solid #000;
-  /* background-image: url("./img/frame1.jpg"); */
+  /* background-image: url("./img/2.png"); */
   /* Изображение будет растянуто с сохранением пропорций */
   background-position: center;
   background-repeat: no-repeat; /* Отключение повторов */
   background-size: cover;
-  
 }
 .description {
   margin-top: 170px;
   max-width: 475px;
   font-family: "SamsungSharpSansBold", sans-serif;
   font-size: 36px;
-  position: absolute;
+
   position: relative;
+  z-index: 5;
 }
 
 .test {
