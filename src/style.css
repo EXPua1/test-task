@@ -52,7 +52,7 @@ body {
 }
 
 .frame_text_container {
-  margin-top: 130px;
+  margin-top: 200px;
   opacity: 0;
   animation: slide-opacity 2s ease-in-out 3s forwards;
   overflow: hidden;
@@ -111,7 +111,7 @@ img {
   left: -250px;
   top: 100px; */
   transform: translate(-250px, 100px);
-  animation: slide-in 2s ease-in-out 0.5s forwards;
+  animation: slide-in 2s ease-in-out 0.3s forwards;
   z-index: 5;
 }
 
@@ -145,7 +145,7 @@ img {
   z-index: 0; /* Псевдоэлемент за содержимым */
   transition: left 0.5s ease; /* Анимация с плавным выезжанием */
   transition: none;
-  animation: frame-in-overlay 2s ease-in-out 2s forwards;
+  animation: frame-in-overlay 2s ease-in-out 2.6s forwards;
   z-index: 2;
 }
 .gallery {
@@ -167,7 +167,7 @@ img {
 }
 .frame_collection {
   width: 100%;
-  height: 1000px;
+  height: 1100px;
   object-fit: cover;
   opacity: 0;
   display: none;
@@ -193,9 +193,9 @@ img {
 .navigation {
   z-index: 3;
   display: flex;
-
+  /* margin-top: 200px; */
   align-items: center;
-  margin-top: 25px;
+
   display: none;
   opacity: 0;
 }
@@ -208,11 +208,43 @@ button {
   background-color: transparent;
   cursor: pointer;
 }
+.btm_btn {
+  position: static;
+  display: flex;
+  border-radius: 58px;
+  width: 305px;
+  background-color: white;
+  border-color: black;
+  height: 124px;
+  justify-content: center;
+  align-items: center;
+  border: 4px solid black;
+  padding: 15px;
+  font-size: 35px;
+  font-family: "SamsungSharpSansregular", sans-serif;
+  z-index: 55;
+  animation: pulse-like-heart 2s infinite ease-in-out;
+  display: none;
+  margin-top: 15px;
+}
+
+@keyframes pulse-like-heart {
+  0% {
+    transform: scale(1); /* Исходный размер */
+  }
+  10% {
+    transform: scale(1.1); /* Быстро увеличивается */
+  }
+  100% {
+    transform: scale(1); /* Медленно возвращается */
+  }
+}
 
 .all {
   width: 50%;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   padding-left: 20px;
 }
 .frame {
@@ -270,6 +302,7 @@ button {
 .all1 {
   width: 100%;
   display: flex;
+  height: 1000px;
 }
 .container {
   /* padding: 35px; */
@@ -278,16 +311,16 @@ button {
   position: relative;
   display: flex;
   flex-direction: column;
-  height: 100%;
+
   border: 4px solid #000;
-  height: 900px;
+
   /* Изображение будет растянуто с сохранением пропорций */
   background-position: center;
   background-repeat: no-repeat; /* Отключение повторов */
   background-size: cover;
 }
 .description {
-  margin-top: 170px;
+  margin-top: 120px;
   max-width: 475px;
   font-family: "SamsungSharpSansBold", sans-serif;
   font-size: 36px;
@@ -297,7 +330,7 @@ button {
 }
 
 .description_text_first {
-  animation: slide-in-descr 2s ease-in-out 1s forwards;
+  animation: slide-in-descr 2s ease-in-out 1.5s forwards;
   /* left: -510px;
   top: 100px; */
   transform: translate(-120%, 100px);
@@ -319,7 +352,7 @@ button {
 }
 
 .description_text_second {
-  animation: slide-in-descr-2 2s ease-in-out 1.5s forwards;
+  animation: slide-in-descr-2 2s ease-in-out 1.6s forwards;
   transform: translate(-120%, 100px);
 }
 
@@ -339,7 +372,7 @@ button {
 }
 
 .description_text_third {
-  animation: slide-in-descr-3 2s ease-in-out 2s forwards; /* Увеличиваем delay для третьего элемента */
+  animation: slide-in-descr-3 2s ease-in-out 1.7s forwards; /* Увеличиваем delay для третьего элемента */
   transform: translate(-120%, 100px);
 }
 
@@ -359,9 +392,9 @@ button {
 }
 
 .bottom_title {
-  margin-top: auto;
-  position: relative;
   z-index: 1;
+
+  margin-top: 35px;
 }
 
 .btm_title {
@@ -384,6 +417,9 @@ button {
   font-family: "SamsungSharpSansMedium", sans-serif;
   color: grey;
   font-size: 16px;
+  position: relative;
+  z-index: 55;
+  padding-bottom: 20px;
 }
 
 @keyframes slide-in {
@@ -401,11 +437,11 @@ button {
   }
 }
 
-.btm_title {
+/* .btm_title {
   left: -700px;
   top: -200px;
   animation: slide-in-btm 2s ease-in-out 0.3s forwards;
-}
+} */
 
 .btm_par_medium {
   transform: translate(-100%);

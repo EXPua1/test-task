@@ -58,16 +58,7 @@ document.querySelector(".previous_btn").addEventListener("click", () => {
 });
 
 // Анимация для btm_par_medium
-gsap.to(".btm_par_medium", {
-  duration: 3,
-  delay: 0.3,
-  x: 0,
-  opacity: 1,
-  ease: "ease-in-out",
-  onComplete: () => {
-    gsap.set(".btm_par_medium", { display: "none" });
-  },
-});
+
 
 // Анимация для .frame_text
 gsap.to(".frame_text", {
@@ -84,15 +75,33 @@ gsap.to(".frame_text", {
   },
 });
 
+
+gsap.to(".btm_par_medium", {
+  duration: 1,
+  delay: 0.2,
+  x: 0,
+  opacity: 1,
+  ease: "ease-in-out",
+  
+  
+  onComplete: () => {
+    gsap.delayedCall(2.5, () => {
+      gsap.set(".btm_par_medium", { display: "none" });
+    });
+  },
+});
+
 // Анимация для btm_title
 gsap.to(".btm_title", {
-  duration: 3,
-  delay: 0.3,
+  duration: 1,
+  delay: 0.2,
   x: 0,
   opacity: 1,
   ease: "ease-in-out",
   onComplete: () => {
-    gsap.set(".btm_title", { display: "none" });
+    gsap.delayedCall(2.5, () => {
+      gsap.set(".btm_title", { display: "none" });
+    });
   },
 });
 
@@ -100,7 +109,7 @@ gsap.to(".btm_title", {
 gsap.set(".navigation", { opacity: 0, display: "none" });
 gsap.to(".navigation", {
   duration: 3.2,
-  delay: 3,
+  delay: 4,
   x: 0,
   opacity: 1,
   ease: "power2.inOut",
@@ -109,3 +118,25 @@ gsap.to(".navigation", {
     console.log("Анимация завершена!");
   },
 });
+
+
+
+gsap.set(".btm_btn", { opacity: 0, display: "none" });
+gsap.to(".btm_btn", {
+  duration: 3.2,
+  delay: 3.7,
+  x: 0,
+  opacity: 1,
+  ease: "power2.inOut",
+  display: "flex",
+  onComplete: () => {
+  gsap.set(".btm_btn", { display: "block" });
+  },
+});
+
+
+// gsap.to(".overlay", {
+//   duration: 1, // Длительность анимации
+//   right: 0, // Перемещение в видимую область
+//   ease: "power2.inOut", // Плавность
+// });
