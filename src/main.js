@@ -1,61 +1,110 @@
-import gsap from "gsap";
+import { gsap } from "gsap";
+const texts = document.querySelectorAll(".frame_text");
+const currentSlide = document.querySelector(".currentSlide_js");
+const images = document.querySelectorAll(
+  ".gallery .frame, .gallery .frame_collection"
+);
 
-// const tl = gsap.timeline({ defaults: { duration: 1 } });
+const totalSlidesWrapper = document.querySelector(".totalSlides_js");
 
-// tl.from(".samsung_logo", { opacity: 0, duration: 1, delay: 1, y: 100, x: -100, ease: "power2.out" });
+let currentIndex = 0;
 
-// const frame = document.querySelector(".frame")
-// document.querySelector(".frame").addEventListener("click", () => {
+const totalSlides = texts.length;
 
-//    frame.classList.add("active")
-// })
+currentSlide.textContent = currentIndex + 1;
+totalSlidesWrapper.textContent = totalSlides;
 
-const backgrounds = [
-    
-    "../src/img/1.png",
-  "../src/img/2.png",
-  "../src/img/3.png",
-  "../src/img/4.png",
-  "../src/img/5.png",
-];
+texts[currentIndex].classList.add("active");
+images[currentIndex].classList.add("active");
+function updateSlide(direction) {
+  texts[currentIndex].classList.remove("active");
+    images[currentIndex].classList.remove("active");
 
-// const frameContainer = document.querySelector(".container");
-// let currentBackground = 0;
-// let intervalId;
+  if (direction === "next") {
+    currentIndex = (currentIndex + 1) % texts.length;
+    texts[currentIndex].style.animation =
+      "frame-in-parg-right 0.3s ease-in-out";
+  } else if (direction === "prev") {
+    currentIndex = (currentIndex - 1 + texts.length) % texts.length;
+  }
 
-// // Функция для смены фона
-// function changeBackground() {
-//   currentBackground = (currentBackground + 1) % backgrounds.length;
-//   frameContainer.style.backgroundImage = `url(${backgrounds[currentBackground]})`;
-// }
+  texts[currentIndex].classList.add("active");
+   images[currentIndex].classList.add("active");
 
-// // Запуск автоматической смены фонов
-// function startBackgroundChange() {
-//   intervalId = setInterval(changeBackground, 3000); // каждые 3 секунды
-// }
+  if (currentSlide) {
+    currentSlide.textContent = currentIndex + 1;
+  }
+}
 
-// // Остановка автоматической смены фонов
-// function stopBackgroundChange() {
-//   clearInterval(intervalId);
-// }
+let intervalId = setInterval(() => {
+  texts[currentIndex].style.animation = "frame-in-parg-left 0.3s ease-in-out";
+  updateSlide("next");
+}, 6000);
 
-// // Запуск автоматической смены фонов при загрузке
-// startBackgroundChange();
+document.querySelector(".next_btn").addEventListener("click", function () {
+  clearInterval(intervalId);
+  updateSlide("next");
 
-// // При наведении мыши переходим в ручной режим
-// frameContainer.addEventListener("mouseenter", () => {
-//   stopBackgroundChange(); // остановим автоматическую смену
-//   // Начнем вручную менять фон при взаимодействии
-//   frameContainer.addEventListener("mousemove", manualBackgroundChange);
-// });
+  texts[currentIndex].style.animation = "frame-in-parg-right 0.3s ease-in-out";
+});
 
-// // При выходе мыши остановим ручную смену и оставим фон на текущем
-// frameContainer.addEventListener("mouseleave", () => {
-//   frameContainer.removeEventListener("mousemove", manualBackgroundChange);
-// });
+document.querySelector(".previous_btn").addEventListener("click", () => {
+  clearInterval(intervalId);
+  updateSlide("prev");
+  texts[currentIndex].style.animation = "frame-in-parg-left 0.3s ease-in-out";
+});
 
-// // Функция для ручной смены фона
-// function manualBackgroundChange() {
-//   currentBackground = (currentBackground + 1) % backgrounds.length;
-//   frameContainer.style.backgroundImage = `url(${backgrounds[currentBackground]})`;
-// }
+gsap.to(".btm_par_medium", {
+  duration: 3,
+  delay: 0.3,
+  x: 0,
+  opacity: 1,
+  ease: "ease-in-out",
+  onComplete: () => {
+    gsap.set(".btm_par_medium", { display: "none" });
+  },
+});
+
+gsap.to(".frame_text", {
+  duration: 3, // Длительность анимации
+  delay: 0.3, // Задержка перед началом анимации
+  opacity: 1, // Видимость
+  ease: "ease-in-out", // Плавное замедление
+  onStart: () => {
+    // Применяем класс с анимацией при старте анимации
+    document.querySelector(".frame_text").classList.add("frame-in-parg-right");
+  },
+  onComplete: () => {
+    // После завершения анимации скрываем элемент
+    gsap.set(".frame_text", { display: "none" });
+    console.log("Анимация завершена!");
+  },
+});
+
+gsap.to(".btm_title", {
+  duration: 3, // Длительность анимации
+  delay: 0.3, // Задержка перед началом анимации
+  x: 0, // Перемещение на место (аналог transform: translateX(0))
+  opacity: 1, // Видимость
+  ease: "ease-in-out", // Плавное замедление
+  onComplete: () => {
+    // По завершению анимации скрываем элемент
+    gsap.set(".btm_title", { display: "none" });
+  },
+});
+
+gsap.set(".navigation", { opacity: 0, display: "none" });
+
+// Анимация для появления и перемещения
+gsap.to(".navigation", {
+  duration: 3.2, // Длительность анимации
+  delay: 3, // Задержка перед началом анимации
+  x: 0, // Перемещение на место (аналог transform: translateX(0))
+  opacity: 1, // Плавное изменение прозрачности (с 0 до 1)
+  ease: "power2.inOut", // Плавное замедление
+  display: "flex", // Сделаем элемент видимым (display: flex)
+  onComplete: () => {
+    // Можно добавить любое действие по завершению анимации
+    console.log("Анимация завершена!");
+  },
+});

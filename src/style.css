@@ -14,28 +14,52 @@
 
 body {
   margin: 0;
+  background-image: url("./img/BG.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.active {
+  display: block !important; /* Показывать только текст с классом active */
+  opacity: 1 !important; /* Делает текст видимым */
+}
+.stop-animation {
+  animation: none !important; /* Останавливает анимацию */
 }
 
 .frame_text {
   font-family: "SamsungSharpSans", sans-serif;
 
-  font-size: 28px;
+  font-size: 16px;
+  display: none; /* Изначально все тексты скрыты */
+  opacity: 0; /* Сделаем их невидимыми */
+  transition: opacity 0.5s ease-in-out; /* Плавное появление */
 }
+
+@keyframes enlarge-shrink {
+  0%,
+  100% {
+    transform: scale(1); /* Исходный размер */
+  }
+  50% {
+    transform: scale(1.1); /* Увеличение на 20% */
+  }
+}
+
+.navigation .left button img,
+.navigation .right button img {
+  width: 16px;
+  animation: enlarge-shrink 2s infinite ease-in-out; /* Применение анимации */
+}
+
 .frame_text_container {
-  position: absolute;
-  top: 400px;
+  margin-top: 130px;
   opacity: 0;
   animation: slide-opacity 2s ease-in-out 3s forwards;
-  z-index: 5;
+  overflow: hidden;
+  line-height: 1.8;
 }
 .read_more {
   color: grey;
-}
-@media (max-width: 768px) {
-    .overlay {
-        width: 100%;
-        height: 50%;
-    }
 }
 
 @keyframes slide-opacity {
@@ -56,6 +80,7 @@ body {
   line-height: 1;
   display: flex;
   justify-content: flex-end;
+  z-index: 1;
 }
 
 h1,
@@ -74,41 +99,101 @@ img {
 .logo {
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
+
   position: relative;
 }
 
 .samsung_logo {
   max-width: 215px;
-  position: absolute;
+  /* position: absolute;
   left: -250px;
-  top: 100px;
+  top: 100px; */
+  transform: translate(-250px, 100px);
   animation: slide-in 2s ease-in-out 0.5s forwards;
   z-index: 5;
 }
 
 .wrapper {
-  background-image: url("./img/BG.png");
-  background-repeat: no-repeat;
-  background-size: cover;
+  margin-top: 150px;
   display: flex;
   justify-content: center;
 }
 
 .overlay {
   background: white;
-  position: absolute;
-  top: 0;
-  left: -100%;
+
+  /* top: 0;
+  left: -100%; */
   width: 50%;
   height: 100%;
   z-index: 2;
   animation: frame-in 2s ease-in-out 1s forwards;
+  transform: translate(-100%, 0);
 }
-.frame_container{
-  
+.test {
+  position: relative;
+}
+.container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%; /* Начальная позиция слева за пределами контейнера */
+  width: 50%; /* Ширина шторки */
+  height: 100%; /* Высота шторки */
+  background-color: white;
+  z-index: 0; /* Псевдоэлемент за содержимым */
+  transition: left 0.5s ease; /* Анимация с плавным выезжанием */
+  transition: none;
+  animation: frame-in-overlay 2s ease-in-out 2s forwards;
+  z-index: 2;
+}
+.gallery {
+  width: 50%;
 }
 
+.paddings {
+  padding: 15px;
+}
+.frame_collection {
+  width: 100%;
+ height: 1000px;
+  object-fit: cover;
+  display: none;
+}
+@keyframes frame-in-overlay {
+  0% {
+    right: -100%; /* Начинает за пределами экрана */
+  }
+
+  100% {
+    left: 0; /* Остается в видимой части экрана */
+  }
+}
+
+.navigation {
+  z-index: 3;
+  display: flex;
+
+  align-items: center;
+  margin-top: 25px;
+  display: none;
+  opacity: 0;
+}
+.counter {
+  font-family: "SamsungSharpSansBold", sans-serif;
+  font-size: 32px;
+}
+button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.all {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
 .frame {
   position: absolute; /* Изображение должно быть внутри контейнера */
   top: 0; /* Отступ сверху 0 */
@@ -116,9 +201,7 @@ img {
   width: 100%; /* Ширина изображения 100% от контейнера */
   height: 100%; /* Высота изображения 100% от контейнера */
   object-fit: cover; /* Сохраняет пропорции */
-}
-.active {
-  transform: translate(-50%, -50%) scale(0.8);
+  display: none;
 }
 
 @keyframes frame-in {
@@ -130,19 +213,53 @@ img {
     left: 0; /* Остается в видимой части экрана */
   }
 }
+@keyframes frame-in-parg-right {
+  0% {
+    transform: translate(0); /* Начальная позиция */
+    opacity: 1; /* Видимость */
+  }
 
+  100% {
+    transform: translate(250px); /* Перемещение влево */
+    opacity: 0; /* Прозрачность */
+  }
+}
+
+@keyframes frame-in {
+  0% {
+    right: -100%; /* Начинает за пределами экрана */
+  }
+
+  100% {
+    left: 0; /* Остается в видимой части экрана */
+  }
+}
+@keyframes frame-in-parg-left {
+  0% {
+    transform: translate(0); /* Начальная позиция */
+    opacity: 1; /* Видимость */
+  }
+
+  100% {
+    transform: translate(-250px); /* Перемещение влево */
+    opacity: 0; /* Прозрачность */
+  }
+}
+
+.all1 {
+  width: 100%;
+  display: flex;
+}
 .container {
-  padding: 35px;
+  /* padding: 35px; */
   width: 1600px;
   overflow: hidden;
   position: relative;
   display: flex;
   flex-direction: column;
-
-  height: 100vh;
-
+  height: 100%;
   border: 4px solid #000;
-  /* background-image: url("./img/2.png"); */
+  height: 1000px;
   /* Изображение будет растянуто с сохранением пропорций */
   background-position: center;
   background-repeat: no-repeat; /* Отключение повторов */
@@ -158,38 +275,72 @@ img {
   z-index: 5;
 }
 
-.test {
-  display: flex;
-  flex-direction: column;
-}
-.test {
-  width: 55px !important;
-  position: absolute;
-  animation: slide-in 1s ease-in-out;
-}
 .description_text_first {
-  animation: slide-in 2s ease-in-out 1s forwards;
-  left: -510px;
-  top: 100px;
-  position: absolute;
+  animation: slide-in-descr 2s ease-in-out 1s forwards;
+  /* left: -510px;
+  top: 100px; */
+  transform: translate(-120%, 100px);
+}
+
+@keyframes slide-in-descr {
+  0% {
+    transform: translate(-120%, 100px);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+    transform: translate(0, 100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
 }
 
 .description_text_second {
-  animation: slide-in-2 2s ease-in-out 1.5s forwards;
-  left: -490px;
-  top: 150px; /* Изменим начальную позицию второго элемента по оси Y */
-  position: absolute;
+  animation: slide-in-descr-2 2s ease-in-out 1.5s forwards;
+  transform: translate(-120%, 100px);
+}
+
+@keyframes slide-in-descr-2 {
+  0% {
+    transform: translate(-120%, 100px);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+    transform: translate(0, 100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
 }
 
 .description_text_third {
-  animation: slide-in-3 2s ease-in-out 2s forwards; /* Увеличиваем delay для третьего элемента */
-  left: -490px;
-  top: 200px; /* Начальная позиция третьего элемента */
-  position: absolute;
+  animation: slide-in-descr-3 2s ease-in-out 2s forwards; /* Увеличиваем delay для третьего элемента */
+  transform: translate(-120%, 100px);
 }
+
+@keyframes slide-in-descr-3 {
+  0% {
+    transform: translate(-120%, 100px);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+    transform: translate(0, 100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
 .bottom_title {
   margin-top: auto;
   position: relative;
+  z-index: 1;
 }
 
 .btm_title {
@@ -197,6 +348,7 @@ img {
   font-size: 95px;
   color: white;
   font-weight: 400;
+  transform: translate(-120%);
 }
 .btm_par_medium {
   font-family: "SamsungSharpSansBold", sans-serif;
@@ -215,47 +367,39 @@ img {
 
 @keyframes slide-in {
   0% {
-    left: -220px; /* Начинает за пределами экрана */
-    opacity: 0; /* Начальная прозрачность */
-    top: 100px; /* Начальная позиция сверху */
+    transform: translate(-250px, 100px);
+    opacity: 0;
   }
   50% {
-    opacity: 1; /* Становится видимым */
-    left: 0; /* Перемещается в видимую часть экрана */
-    top: 100px; /* Остается на исходной высоте */
+    opacity: 1;
+    transform: translate(0, 100px);
   }
   100% {
-    opacity: 1; /* Сохраняем видимость */
-    left: 0; /* Остается в видимой части экрана */
-    top: 0; /* Поднимется вверх до положения 0 */
+    opacity: 1;
+    transform: translate(0, 0);
   }
 }
 
 .btm_title {
-  position: absolute;
   left: -700px;
   top: -200px;
   animation: slide-in-btm 2s ease-in-out 0.3s forwards;
 }
 
 .btm_par_medium {
-  position: absolute;
-  top: -90px;
-  animation: slide-in-btm 2s ease-in-out 0.3s forwards;
+  transform: translate(-100%);
+  /* animation: slide-in-btm 2s ease-in-out 0.3s forwards; */
 }
 
 @keyframes slide-in-btm {
   0% {
-    left: -700px; /* Начинает за пределами экрана */
+    transform: translate(-100%); /* Начинает за пределами экрана */
     opacity: 0; /* Начальная прозрачность */
   }
-  50% {
-    opacity: 1; /* Становится видимым */
-    left: 0; /* Перемещается в видимую часть экрана */
-  }
+
   100% {
     opacity: 1; /* Сохраняем видимость */
-    left: 0; /* Остается в видимой части экрана */
+    transform: translate(0);
   }
 }
 
