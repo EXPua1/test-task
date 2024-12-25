@@ -1,4 +1,4 @@
-import { gsap } from "gsap";
+import { gsap } from "./node_modules/gsap/index.js";
 const texts = document.querySelectorAll(".frame_text");
 const currentSlide = document.querySelector(".currentSlide_js");
 const images = document.querySelectorAll(
@@ -18,7 +18,7 @@ texts[currentIndex].classList.add("active");
 images[currentIndex].classList.add("active");
 function updateSlide(direction) {
   texts[currentIndex].classList.remove("active");
-    images[currentIndex].classList.remove("active");
+  images[currentIndex].classList.remove("active");
 
   if (direction === "next") {
     currentIndex = (currentIndex + 1) % texts.length;
@@ -29,7 +29,7 @@ function updateSlide(direction) {
   }
 
   texts[currentIndex].classList.add("active");
-   images[currentIndex].classList.add("active");
+  images[currentIndex].classList.add("active");
 
   if (currentSlide) {
     currentSlide.textContent = currentIndex + 1;
