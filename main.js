@@ -17,12 +17,35 @@ texts[currentIndex].classList.add("active");
 images[currentIndex].classList.add("active");
 
 function updateSlide(direction) {
+  // Убираем активный класс с текущего слайда
   texts[currentIndex].classList.remove("active");
   images[currentIndex].classList.remove("active");
 
-  // Добавляем анимацию исчезновения текущего слайда через GSAP
-  gsap.to(texts[currentIndex], { opacity: 0, duration: 0.3 });
-  gsap.to(images[currentIndex], { opacity: 0, duration: 0.3 });
+  // Анимация для текста
+  if (direction === "next") {
+    // Для следующего слайда текст уходит вправо
+    gsap.to(texts[currentIndex], {
+      opacity: 0,
+      x: 150,
+      duration: 0.5,
+      ease: "power2.inOut",
+    });
+  } else if (direction === "prev") {
+    // Для предыдущего слайда текст уходит влево
+    gsap.to(texts[currentIndex], {
+      opacity: 0,
+      x: -150,
+      duration: 0.5,
+      ease: "power2.inOut",
+    });
+  }
+
+  // Анимация для изображения
+  gsap.to(images[currentIndex], {
+    opacity: 0,
+    duration: 0.5,
+    ease: "power2.inOut",
+  });
 
   // Обновляем индекс
   if (direction === "next") {
@@ -31,13 +54,31 @@ function updateSlide(direction) {
     currentIndex = (currentIndex - 1 + texts.length) % texts.length;
   }
 
-  // Добавляем анимацию появления нового слайда через GSAP
-  gsap.to(texts[currentIndex], { opacity: 1, duration: 0.3 });
-  gsap.to(images[currentIndex], { opacity: 1, duration: 0.3 });
+  // Анимация для нового текста
+  if (direction === "next") {
+    // Для следующего слайда текст появляется слева
+    gsap.fromTo(
+      texts[currentIndex],
+      { opacity: 0, x: -150 },
+      { opacity: 1, x: 0, duration: 0.5, ease: "power2.inOut" }
+    );
+  } else if (direction === "prev") {
+    // Для предыдущего слайда текст появляется справа
+    gsap.fromTo(
+      texts[currentIndex],
+      { opacity: 0, x: 150 },
+      { opacity: 1, x: 0, duration: 0.5, ease: "power2.inOut" }
+    );
+  }
 
+  // Новое изображение появляется сразу
+  gsap.set(images[currentIndex], { opacity: 1 });
+
+  // Добавляем активный класс для нового слайда
   texts[currentIndex].classList.add("active");
   images[currentIndex].classList.add("active");
 
+  // Обновляем индикатор текущего слайда
   if (currentSlide) {
     currentSlide.textContent = currentIndex + 1;
   }
@@ -59,7 +100,6 @@ document.querySelector(".previous_btn").addEventListener("click", () => {
 
 // Анимация для btm_par_medium
 
-
 // Анимация для .frame_text
 gsap.to(".frame_text", {
   duration: 3,
@@ -75,15 +115,13 @@ gsap.to(".frame_text", {
   },
 });
 
-
 gsap.to(".btm_par_medium", {
   duration: 1,
   delay: 0.2,
   x: 0,
   opacity: 1,
   ease: "ease-in-out",
-  
-  
+
   onComplete: () => {
     gsap.delayedCall(2.5, () => {
       gsap.set(".btm_par_medium", { display: "none" });
@@ -119,8 +157,6 @@ gsap.to(".navigation", {
   },
 });
 
-
-
 gsap.set(".btm_btn", { opacity: 0, display: "none" });
 gsap.to(".btm_btn", {
   duration: 3.2,
@@ -130,10 +166,9 @@ gsap.to(".btm_btn", {
   ease: "power2.inOut",
   display: "flex",
   onComplete: () => {
-  gsap.set(".btm_btn", { display: "block" });
+    gsap.set(".btm_btn", { display: "block" });
   },
 });
-
 
 // gsap.to(".overlay", {
 //   duration: 1, // Длительность анимации
