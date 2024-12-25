@@ -114,7 +114,6 @@ img {
 }
 
 .wrapper {
-  margin-top: 150px;
   display: flex;
   justify-content: center;
 }
@@ -156,7 +155,7 @@ img {
 }
 .frame_collection {
   width: 100%;
- height: 1000px;
+  height: 1000px;
   object-fit: cover;
   display: none;
 }
@@ -259,7 +258,7 @@ button {
   flex-direction: column;
   height: 100%;
   border: 4px solid #000;
-  height: 1000px;
+  height: 900px;
   /* Изображение будет растянуто с сохранением пропорций */
   background-position: center;
   background-repeat: no-repeat; /* Отключение повторов */
