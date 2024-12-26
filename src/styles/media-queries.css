@@ -87,7 +87,9 @@
   .all {
     align-items: center;
   }
-
+ .title{
+  font-size: 25px !important;
+ }
   .frame_text_container {
     width: 190px !important;
   }
