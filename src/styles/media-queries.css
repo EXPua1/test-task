@@ -1,4 +1,4 @@
-@media (min-width: 320px) and (max-width: 767px) {
+@media (min-width: 320px) and (max-width: 424px) {
   .logo {
     align-items: center;
   }
@@ -9,13 +9,14 @@
     font-size: 18px !important;
   }
 
-  .frame_collection {
+  /* .frame_collection {
     transform: translate(5px, -100px);
-  }
+  } */
 
   .all {
     padding-left: 5px !important;
     width: 46% !important;
+    align-items: center !important;
   }
 
   .description {
@@ -25,23 +26,31 @@
     align-items: center;
     flex-direction: column;
   }
+  .svg-image {
+  width: 15px !important; /* Новая ширина */
+  
+}
 
   .description_text_third svg {
     width: 155px !important;
     height: 36px !important  ;
   }
-  .description_text_third svg img {
-    width: 80px !important;
+  .description_text_third img {
+    width: 30px !important;
     height: 16px !important  ;
   }
 
   .frame_text_container {
-    margin-top: 100px !important;
+    margin-top: 50px !important;
     height: 300px !important;
+    width: 117px !important;
+  }
+  .read_more {
+    font-size: 10px !important;
   }
 
   .frame_text {
-    font-size: 12px !important;
+    font-size: 10px !important;
   }
 
   .btm_btn {
@@ -59,5 +68,48 @@
   }
 }
 
-@media (min-width: 767px) and (max-width: 767px) {
+@media (min-width: 425px) and (max-width: 767px) {
+  .description {
+    font-size: 28px !important;
+    justify-content: center !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+  .all{
+    align-items: center;
+  }
+
+  .frame_text_container {
+    width: 190px !important;
+  }
+  .frame_text {
+    font-size: 12px !important;
+    line-height: 1.6 !important;
+  }
+
+  .read_more {
+    font-size: 12px !important;
+  }
+   .btm_btn {
+    height: 80px !important;
+    font-size: 18px !important;
+    width: 140px !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1200px) {
+  .description {
+    font-size: 27px !important;
+  }
+  .frame_text {
+    font-size: 16px !important;
+  }
+  .frame_text_container {
+    width: 360px !important;
+  }
+  .btm_btn {
+    height: 80px !important;
+    font-size: 18px !important;
+    width: 190px !important;
+  }
 }

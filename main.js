@@ -7,6 +7,13 @@ const images = document.querySelectorAll(
 );
 const totalSlidesWrapper = document.querySelector(".totalSlides_js");
 
+const botton_par = document.querySelector(".btm_par_last");
+if (botton_par) {
+  setTimeout(() => {
+    botton_par.style.display = "none";
+  }, 3700); // 3000 мс = 3 секунды
+}
+
 let currentIndex = 0;
 const totalSlides = texts.length;
 
@@ -17,7 +24,7 @@ texts[currentIndex].classList.add("active");
 images[currentIndex].classList.add("active");
 
 function updateSlide(direction) {
-  
+  // Убираем активный класс с текущего слайда
   texts[currentIndex].classList.remove("active");
   images[currentIndex].classList.remove("active");
 
