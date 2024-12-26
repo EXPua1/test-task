@@ -1,54 +1,56 @@
+@import url("media-queries.css");
+
 @font-face {
   font-family: SamsungSharpSans;
-  src: url("./fonts/SamsungSharpSans-Medium.otf") format("opentype");
+  src: url("../fonts/SamsungSharpSans-Medium.otf") format("opentype");
 }
 @font-face {
   font-family: SamsungSharpSans-Regular;
-  src: url("./fonts/SamsungSharpSans-Regular.otf") format("opentype");
+  src: url("../fonts/SamsungSharpSans-Regular.otf") format("opentype");
 }
 
 @font-face {
   font-family: SamsungSharpSansBold;
-  src: url("./fonts/SamsungSharpSans-Bold.otf") format("opentype");
+  src: url("../fonts/SamsungSharpSans-Bold.otf") format("opentype");
 }
 
 body {
   margin: 0;
-  background-image: url("./img/BG.png");
+  background-image: url("../img/BG.png");
   background-repeat: no-repeat;
   background-size: cover;
 }
 .active {
-  display: block !important; /* Показывать только текст с классом active */
-  opacity: 1 !important; /* Делает текст видимым */
+  display: block !important; 
+  opacity: 1 !important; 
 }
 .stop-animation {
-  animation: none !important; /* Останавливает анимацию */
+  animation: none !important; 
 }
 
 .frame_text {
   font-family: "SamsungSharpSans", sans-serif;
 
   font-size: 16px;
-  display: none; /* Изначально все тексты скрыты */
-  opacity: 0; /* Сделаем их невидимыми */
-  transition: opacity 0.5s ease-in-out; /* Плавное появление */
+  display: none; 
+  opacity: 0; 
+  transition: opacity 0.5s ease-in-out; 
 }
 
 @keyframes enlarge-shrink {
   0%,
   100% {
-    transform: scale(1); /* Исходный размер */
+    transform: scale(1); 
   }
   50% {
-    transform: scale(1.1); /* Увеличение на 20% */
+    transform: scale(1.1); 
   }
 }
 
 .navigation .left button img,
 .navigation .right button img {
   width: 16px;
-  animation: enlarge-shrink 2s infinite ease-in-out; /* Применение анимации */
+  animation: enlarge-shrink 2s infinite ease-in-out; 
 }
 
 .frame_text_container {
@@ -61,6 +63,9 @@ body {
 }
 .read_more {
   color: grey;
+  font-family: "SamsungSharpSans", sans-serif;
+
+  font-size: 16px;
 }
 
 @keyframes slide-opacity {
@@ -123,8 +128,7 @@ img {
 .overlay {
   background: white;
 
-  /* top: 0;
-  left: -100%; */
+  
   width: 50%;
   height: 100%;
   z-index: 2;
@@ -138,19 +142,18 @@ img {
   content: "";
   position: absolute;
   top: 0;
-  left: -100%; /* Начальная позиция слева за пределами контейнера */
-  width: 50%; /* Ширина шторки */
-  height: 100%; /* Высота шторки */
+  left: -100%; 
+  width: 50%; 
+  height: 100%; 
   background-color: white;
-  z-index: 0; /* Псевдоэлемент за содержимым */
-  transition: left 0.5s ease; /* Анимация с плавным выезжанием */
+  z-index: 0; 
+  transition: left 0.5s ease; 
   transition: none;
   animation: frame-in-overlay 2s ease-in-out 2.6s forwards;
   z-index: 2;
 }
-.gallery {
-  /* width: 50%; */
-}
+
+
 
 @keyframes slideIn-gallery {
   from {
@@ -176,8 +179,8 @@ img {
 }
 
 .frame_collection.active {
-  display: block ;
-  opacity: 1;
+  display: block;
+  opacity: 0.5;
 }
 
 .some {
@@ -186,11 +189,11 @@ img {
 
 @keyframes frame-in-overlay {
   0% {
-    right: -100%; /* Начинает за пределами экрана */
+    right: -100%; 
   }
 
   100% {
-    left: 0; /* Остается в видимой части экрана */
+    left: 0; 
   }
 }
 
@@ -234,13 +237,13 @@ button {
 
 @keyframes pulse-like-heart {
   0% {
-    transform: scale(1); /* Исходный размер */
+    transform: scale(1);
   }
   10% {
-    transform: scale(1.1); /* Быстро увеличивается */
+    transform: scale(1.1); 
   }
   100% {
-    transform: scale(1); /* Медленно возвращается */
+    transform: scale(1); 
   }
 }
 
@@ -252,54 +255,54 @@ button {
   padding-left: 20px;
 }
 .frame {
-  position: absolute; /* Изображение должно быть внутри контейнера */
-  top: 0; /* Отступ сверху 0 */
-  left: 0; /* Отступ слева 0 */
-  width: 100%; /* Ширина изображения 100% от контейнера */
-  height: 100%; /* Высота изображения 100% от контейнера */
-  object-fit: cover; /* Сохраняет пропорции */
+  position: absolute; 
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  height: 100%; 
+  object-fit: cover; 
   display: none;
 }
 
 @keyframes frame-in {
   0% {
-    right: -100%; /* Начинает за пределами экрана */
+    right: -100%; 
   }
 
   100% {
-    left: 0; /* Остается в видимой части экрана */
+    left: 0; 
   }
 }
 @keyframes frame-in-parg-right {
   0% {
-    transform: translate(0); /* Начальная позиция */
-    opacity: 1; /* Видимость */
+    transform: translate(0); 
+    opacity: 1; 
   }
 
   100% {
-    transform: translate(250px); /* Перемещение влево */
-    opacity: 0; /* Прозрачность */
+    transform: translate(250px); 
+    opacity: 0; 
   }
 }
 
 @keyframes frame-in {
   0% {
-    right: -100%; /* Начинает за пределами экрана */
+    right: -100%; 
   }
 
   100% {
-    left: 0; /* Остается в видимой части экрана */
+    left: 0; 
   }
 }
 @keyframes frame-in-parg-left {
   0% {
-    transform: translate(0); /* Начальная позиция */
-    opacity: 1; /* Видимость */
+    transform: translate(0); 
+    opacity: 1; 
   }
 
   100% {
-    transform: translate(-250px); /* Перемещение влево */
-    opacity: 0; /* Прозрачность */
+    transform: translate(-250px); 
+    opacity: 0;
   }
 }
 
@@ -318,9 +321,9 @@ button {
 
   border: 4px solid #000;
 
-  /* Изображение будет растянуто с сохранением пропорций */
+  
   background-position: center;
-  background-repeat: no-repeat; /* Отключение повторов */
+  background-repeat: no-repeat; 
   background-size: cover;
 }
 .description {
@@ -376,7 +379,7 @@ button {
 }
 
 .description_text_third {
-  animation: slide-in-descr-3 2s ease-in-out 1.7s forwards; /* Увеличиваем delay для третьего элемента */
+  animation: slide-in-descr-3 2s ease-in-out 1.7s forwards; 
   transform: translate(-120%, 100px);
 }
 
@@ -454,48 +457,48 @@ button {
 
 @keyframes slide-in-btm {
   0% {
-    transform: translate(-100%); /* Начинает за пределами экрана */
-    opacity: 0; /* Начальная прозрачность */
+    transform: translate(-100%); 
+    opacity: 0; 
   }
 
   100% {
-    opacity: 1; /* Сохраняем видимость */
+    opacity: 1; 
     transform: translate(0);
   }
 }
 
 @keyframes slide-in-2 {
   0% {
-    left: -220px; /* Начинает за пределами экрана */
-    opacity: 0; /* Начальная прозрачность */
-    top: 150px; /* Начальная позиция сверху для второго элемента */
+    left: -220px;
+    opacity: 0; 
+    top: 150px; 
   }
   50% {
-    opacity: 1; /* Становится видимым */
-    left: 0; /* Перемещается в видимую часть экрана */
-    top: 150px; /* Остается на исходной высоте */
+    opacity: 1; 
+    left: 0; 
+    top: 150px; 
   }
   100% {
-    opacity: 1; /* Сохраняем видимость */
-    left: 0; /* Остается в видимой части экрана */
-    top: 40px; /* Поднимется вверх до положения 0 */
+    opacity: 1; 
+    left: 0; 
+    top: 40px; 
   }
 }
 
 @keyframes slide-in-3 {
   0% {
-    left: -220px; /* Начинает за пределами экрана */
-    opacity: 0; /* Начальная прозрачность */
-    top: 200px; /* Начальная позиция сверху для третьего элемента */
+    left: -220px; 
+    opacity: 0; 
+    top: 200px; 
   }
   50% {
-    opacity: 1; /* Становится видимым */
-    left: 0; /* Перемещается в видимую часть экрана */
-    top: 200px; /* Остается на исходной высоте */
+    opacity: 1; 
+    left: 0; 
+    top: 200px; 
   }
   100% {
-    opacity: 1; /* Сохраняем видимость */
-    left: 0; /* Остается в видимой части экрана */
-    top: 80px; /* Поднимется вверх до положения 0 */
+    opacity: 1; 
+    left: 0; 
+    top: 80px; 
   }
 }

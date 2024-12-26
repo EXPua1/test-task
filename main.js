@@ -17,13 +17,13 @@ texts[currentIndex].classList.add("active");
 images[currentIndex].classList.add("active");
 
 function updateSlide(direction) {
-  // Убираем активный класс с текущего слайда
+  
   texts[currentIndex].classList.remove("active");
   images[currentIndex].classList.remove("active");
 
-  // Анимация для текста
+ 
   if (direction === "next") {
-    // Для следующего слайда текст уходит вправо
+   
     gsap.to(texts[currentIndex], {
       opacity: 0,
       x: 150,
@@ -31,7 +31,7 @@ function updateSlide(direction) {
       ease: "power2.inOut",
     });
   } else if (direction === "prev") {
-    // Для предыдущего слайда текст уходит влево
+
     gsap.to(texts[currentIndex], {
       opacity: 0,
       x: -150,
@@ -40,30 +40,23 @@ function updateSlide(direction) {
     });
   }
 
-  // Анимация для изображения
-  gsap.to(images[currentIndex], {
-    opacity: 0,
-    duration: 0.5,
-    ease: "power2.inOut",
-  });
-
-  // Обновляем индекс
+  
   if (direction === "next") {
     currentIndex = (currentIndex + 1) % texts.length;
   } else if (direction === "prev") {
     currentIndex = (currentIndex - 1 + texts.length) % texts.length;
   }
 
-  // Анимация для нового текста
+  
   if (direction === "next") {
-    // Для следующего слайда текст появляется слева
+   
     gsap.fromTo(
       texts[currentIndex],
       { opacity: 0, x: -150 },
       { opacity: 1, x: 0, duration: 0.5, ease: "power2.inOut" }
     );
   } else if (direction === "prev") {
-    // Для предыдущего слайда текст появляется справа
+   
     gsap.fromTo(
       texts[currentIndex],
       { opacity: 0, x: 150 },
@@ -71,14 +64,13 @@ function updateSlide(direction) {
     );
   }
 
-  // Новое изображение появляется сразу
-  gsap.set(images[currentIndex], { opacity: 1 });
 
-  // Добавляем активный класс для нового слайда
+
+  
   texts[currentIndex].classList.add("active");
   images[currentIndex].classList.add("active");
 
-  // Обновляем индикатор текущего слайда
+ 
   if (currentSlide) {
     currentSlide.textContent = currentIndex + 1;
   }
@@ -98,9 +90,7 @@ document.querySelector(".previous_btn").addEventListener("click", () => {
   updateSlide("prev");
 });
 
-// Анимация для btm_par_medium
 
-// Анимация для .frame_text
 gsap.to(".frame_text", {
   duration: 3,
   delay: 0.3,
@@ -111,7 +101,7 @@ gsap.to(".frame_text", {
   },
   onComplete: () => {
     gsap.set(".frame_text", { display: "none" });
-    console.log("Анимация завершена!");
+    console.log("done!");
   },
 });
 
@@ -129,7 +119,7 @@ gsap.to(".btm_par_medium", {
   },
 });
 
-// Анимация для btm_title
+
 gsap.to(".btm_title", {
   duration: 1,
   delay: 0.2,
@@ -143,7 +133,7 @@ gsap.to(".btm_title", {
   },
 });
 
-// Анимация для .navigation
+
 gsap.set(".navigation", { opacity: 0, display: "none" });
 gsap.to(".navigation", {
   duration: 3.2,
@@ -153,7 +143,7 @@ gsap.to(".navigation", {
   ease: "power2.inOut",
   display: "flex",
   onComplete: () => {
-    console.log("Анимация завершена!");
+    console.log("done");
   },
 });
 
@@ -170,8 +160,12 @@ gsap.to(".btm_btn", {
   },
 });
 
-// gsap.to(".overlay", {
-//   duration: 1, // Длительность анимации
-//   right: 0, // Перемещение в видимую область
-//   ease: "power2.inOut", // Плавность
-// });
+
+document.body.addEventListener("click", function (event) {
+  if (
+    event.target.classList.contains("read_more") ||
+    event.target.classList.contains("btm_btn")
+  ) {
+    window.location.href = "page.html";
+  }
+});

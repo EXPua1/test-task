@@ -1,0 +1,63 @@
+@media (min-width: 320px) and (max-width: 767px) {
+  .logo {
+    align-items: center;
+  }
+  .samsung_logo {
+    width: 100px;
+  }
+  .title {
+    font-size: 18px !important;
+  }
+
+  .frame_collection {
+    transform: translate(5px, -100px);
+  }
+
+  .all {
+    padding-left: 5px !important;
+    width: 46% !important;
+  }
+
+  .description {
+    font-size: 18px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .description_text_third svg {
+    width: 155px !important;
+    height: 36px !important  ;
+  }
+  .description_text_third svg img {
+    width: 80px !important;
+    height: 16px !important  ;
+  }
+
+  .frame_text_container {
+    margin-top: 100px !important;
+    height: 300px !important;
+  }
+
+  .frame_text {
+    font-size: 12px !important;
+  }
+
+  .btm_btn {
+    height: 80px !important;
+    font-size: 18px !important;
+    width: 140px !important;
+  }
+
+  .btm_title {
+    font-size: 14px !important;
+  }
+
+  .btm_par_last {
+    font-size: 10px !important;
+  }
+}
+
+@media (min-width: 767px) and (max-width: 767px) {
+}
