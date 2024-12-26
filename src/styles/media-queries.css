@@ -1,10 +1,20 @@
+@media (min-width: 320px) and (max-width: 767px) {
+  .samsung_logo {
+    width: 100px;
+  }
+}
+
 @media (min-width: 320px) and (max-width: 424px) {
   .logo {
     align-items: center;
   }
-  .samsung_logo {
-    width: 100px;
+  .btm_par_medium{
+    font-size: 16px !important;
   }
+  .btm_title_bold{
+    font-size: 16px !important;
+  }
+
   .title {
     font-size: 18px !important;
   }
@@ -27,9 +37,8 @@
     flex-direction: column;
   }
   .svg-image {
-  width: 15px !important; /* Новая ширина */
-  
-}
+    width: 15px !important; /* Новая ширина */
+  }
 
   .description_text_third svg {
     width: 155px !important;
@@ -75,7 +84,7 @@
     flex-direction: column !important;
     align-items: center !important;
   }
-  .all{
+  .all {
     align-items: center;
   }
 
@@ -90,7 +99,7 @@
   .read_more {
     font-size: 12px !important;
   }
-   .btm_btn {
+  .btm_btn {
     height: 80px !important;
     font-size: 18px !important;
     width: 140px !important;
