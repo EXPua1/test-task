@@ -18,7 +18,7 @@ body {
   margin: 0;
   background-image: url("../img/BG.png");
   background-repeat: no-repeat;
-  background-size: cover;
+  /* background-size: cover; */
 }
 .active {
   display: block !important;
@@ -176,7 +176,7 @@ img {
   /* transform: translate(5px, -82px); */
 }
 .gallery {
-  /* width: 50%; */
+  width: 50%;
 }
 
 .frame_collection.active {

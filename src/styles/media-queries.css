@@ -2,16 +2,24 @@
   .samsung_logo {
     width: 100px;
   }
+  .frame_collection {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+  }
+  .container::after {
+    display: none;
+  }
 }
 
 @media (min-width: 320px) and (max-width: 424px) {
-  .logo {
+  /* .logo {
     align-items: center;
-  }
-  .btm_par_medium{
+  } */
+  .btm_par_medium {
     font-size: 16px !important;
   }
-  .btm_title_bold{
+  .btm_title_bold {
     font-size: 16px !important;
   }
 
@@ -24,9 +32,9 @@
   } */
 
   .all {
-    padding-left: 5px !important;
-    width: 46% !important;
-    align-items: center !important;
+    /* padding-left: 5px !important; */
+    /* width: 46% !important; */
+    /* align-items: center !important; */
   }
 
   .description {
@@ -51,8 +59,8 @@
 
   .frame_text_container {
     margin-top: 50px !important;
-    height: 300px !important;
-    width: 117px !important;
+    height: 250px !important;
+    width: 100% !important;
   }
   .read_more {
     font-size: 10px !important;
@@ -66,6 +74,7 @@
     height: 80px !important;
     font-size: 18px !important;
     width: 140px !important;
+    margin-left: 10px !important;
   }
 
   .btm_title {
@@ -84,14 +93,30 @@
     flex-direction: column !important;
     align-items: center !important;
   }
-  .all {
-    align-items: center;
+  /* .btm_par_medium {
+    font-size: 16px !important;
+  } */
+  /* .btm_title_bold {
+    font-size: 20px !important;
+  } */
+  .btm_title{
+    font-size: 35px !important;
   }
- .title{
-  font-size: 25px !important;
- }
+  .description {
+    font-size: 23px !important;
+  }
+  .bottom_title {
+    margin-bottom: 25px;
+  }
+
+  .all {
+    /* align-items: center; */
+  }
+  .title {
+    font-size: 25px !important;
+  }
   .frame_text_container {
-    width: 190px !important;
+    width: 100% !important;
   }
   .frame_text {
     font-size: 12px !important;
@@ -116,7 +141,7 @@
     font-size: 16px !important;
   }
   .frame_text_container {
-    width: 360px !important;
+    width: 100% !important;
   }
   .btm_btn {
     height: 80px !important;
